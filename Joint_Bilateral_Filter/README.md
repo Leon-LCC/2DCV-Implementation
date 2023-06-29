@@ -71,7 +71,7 @@ result = JBF.joint_bilateral_filter(img_rgb, guidance).astype(np.uint8)
 python example.py --image_path input_image_path \
                   --save_path output_image_path (optional) \
                   --Ss sigma_s (optional) \
-                  --Sr sigma_r (optional)
+                  --Sr sigma_r (optional) \
                   --gray (optional)
 
 E.g., python example.py --image_path ./data/Lenna.png \
@@ -98,9 +98,9 @@ $$
 \alpha, \beta, \gamma \geq 0 
 $$
 
-where $R$, $G$, and $B$ are the red, green, and blue channels of the input color image, respectively, $Y$ is the output gray-scale image, $\alpha$, $\beta$, and $\gamma$ are the weights of the three channels, respectively. 
-&ensp;
-The joint bilateral filter can be utilized to determine suitable weights for each channel. The process is outlined below. Given a weight space of $\alpha$, $\beta$, and $\gamma$,
+where $R$, $G$, and $B$ are the red, green, and blue channels of the input color image, respectively, $Y$ is the output grayscale image, $\alpha$, $\beta$, and $\gamma$ are the weights of the three channels, respectively.
+
+The joint bilateral filter can be utilized to determine suitable weights for each channel. The process is outlined below:
 1. Convert the input color image to a grayscale image using the abovementioned equation.
 2. Apply the joint bilateral filter to the input color image, using the grayscale image as the guidance image.
 3. Apply the joint bilateral filter to the input color image, using itself as the guidance image.
@@ -129,27 +129,25 @@ Below, we present some visual results obtained using various weights.
     |:---:|:---:|:---:|
     | Guided by RGB | Guided by gray-scale | gray-scale |
 
-&ensp;
-Clear edges and noticeable color variations are essential for perceiving intricate details and distinguishing objects in a grayscale image. As evidenced by the grayscale images above, those with lower errors demonstrate a heightened clarity in their overall contours and a greater contrast between light and dark regions. Conversely, the images with higher errors exhibit diminished clarity, less defined contours, and a more even brightness level throughout.
-&ensp;
+As evidenced by the grayscale images above, those with lower errors demonstrate a heightened clarity in their overall contours and a greater contrast between light and dark regions. Conversely, the images with higher errors exhibit diminished clarity, less defined contours, and a more even brightness level.
 
 ##### Usage
 ```bash
 python application.py --image_path input_image_path \
-                  --save_dir output_directory \
-                  --Ss sigma_s (optional) \
-                  --Sr sigma_r (optional) \
-                  --R weight_of_red_channel (optional) \
-                  --G weight_of_green_channel (optional) \
-                  --B weight_of_blue_channel (optional) \
+                      --save_dir output_directory \
+                      --Ss sigma_s (optional) \
+                      --Sr sigma_r (optional) \
+                      --R weight_of_red_channel (optional) \
+                      --G weight_of_green_channel (optional) \
+                      --B weight_of_blue_channel (optional)
 
-E.g., python example.py --image_path ./data/color.png \
-                        --save_path ./result/app/color \
-                        --Ss 1 \
-                        --Sr 0.05 \
-                        --R 0.2 \
-                        --G 0.8 \
-                        --B 0.0
+E.g., python application.py --image_path ./data/color.png \
+                            --save_path ./result/app/color \
+                            --Ss 1 \
+                            --Sr 0.05 \
+                            --R 0.2 \
+                            --G 0.8 \
+                            --B 0.0
 ```
 
 
@@ -158,16 +156,16 @@ E.g., python example.py --image_path ./data/color.png \
 
 
 ## Appendix: Speed up with loop unrolling
-The weights of the spatial kernel are pre-calculated during the construction of **Joint_bilateral_filter()**. The algorithm executes a single for loop, computing one position within each pixel's window simultaneously in each iteration.
+We speed up the process by only executing a single **for loop**, computing one position of each pixel's window simultaneously in each iteration.
 
-Take the following grid as an example. Assuming a window size of 3x3, each of the numbers 1 to 9 represents a specific position within the window. 
+Assuming a window size of 3x3, each number 1 to 9 represents a specific position within the window. 
 | **1** | **2** | **3** |
 |:---:|:---:|:---:|
 | **4** | **5** | **6** |
 | **7** | **8** | **9** |
 
-Let's take position 1 as an example. The computation for position 1 involves several steps. Firstly, the top-left part of the padded image, which has the same size as the size of the original image, is selected. Next, the weight calculation is performed by subtracting the top-left part from the original image, squaring the result, and dividing it by the variation. Afterward, the weight of the relative range kernel is calculated. Then, it's multiplied by the pre-calculated weight of the spatial kernel. Finally, the obtained result is multiplied by the pixel value of the original image and added to the initial output value, which is set to 0.
+Let's take position 1 as an example. The computation for position 1 involves several steps. Firstly, the padded image's top-left part, which is the same size as the original image, is selected. Next, the weight calculation is performed by subtracting the top-left part from the original image, squaring the result, and dividing it by the variation. Afterward, the weight of the relative range kernel is calculated. Then, it's multiplied by the pre-calculated weight of the spatial kernel. Finally, the obtained result is multiplied by the pixel value of the original image and added to the initial output value, which is set to 0.
 
-This same process is applied to positions 2, 3, and so on, up to position 9. The temporary result of each position is computed and added to the output. The final output is obtained by dividing it by the sum of the previously calculated weights.
+This same process is applied to positions 2, 3, and so on, up to position 9. The temporary result of each position is computed and added to the output. The final output is divided by the sum of the previously calculated weights.
 
 This method parallelizes the computation for each pixel, reducing the number of branches required within the loop. By effectively utilizing the memory and cache's spatial locality properties in matrix calculations, it accelerates the overall process.
