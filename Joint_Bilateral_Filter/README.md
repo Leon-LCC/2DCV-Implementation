@@ -11,11 +11,11 @@
 The class of Joint Bilateral Filter is implemented in [JBF.py](./JBF.py).
 ```python
 # Declare a Joint Bilateral Filter object with parameters sigma_s and sigma_r
-# E.g., sigma_s = 2, sigma_r = 0.1
-JBF = Joint_bilateral_filter(sigma_s, sigma_r)
+# E.g., SIGMA_S = 2, SIGMA_R = 0.1
+JBF = Joint_bilateral_filter(SIGMA_S, SIGMA_R)
 
 # Open a image
-img = cv2.imread(image_path)
+img = cv2.imread(INPUT_IMAGE_PATH)
 # Convert to RGB
 img_rgb = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 
@@ -68,10 +68,10 @@ result = JBF.joint_bilateral_filter(img_rgb, guidance).astype(np.uint8)
 
 - Usage
 ```bash
-python example.py --image_path input_image_path \
-                  --save_path output_image_path (optional) \
-                  --Ss sigma_s (optional) \
-                  --Sr sigma_r (optional) \
+python example.py --image_path INPUT_IMAGE_PATH \
+                  --save_path OUTPUT_IMAGE_PATH (optional) \
+                  --Ss SIGMA_S (optional) \
+                  --Sr SIGMA_r (optional) \
                   --gray (optional)
 
 E.g., python example.py --image_path ./data/Lenna.png \
@@ -133,13 +133,13 @@ As evidenced by the grayscale images above, those with lower errors demonstrate 
 
 ##### Usage
 ```bash
-python application.py --image_path input_image_path \
-                      --save_dir output_directory \
-                      --Ss sigma_s (optional) \
-                      --Sr sigma_r (optional) \
-                      --R weight_of_red_channel (optional) \
-                      --G weight_of_green_channel (optional) \
-                      --B weight_of_blue_channel (optional)
+python application.py --image_path INPUT_IMAGE_PATH \
+                      --save_dir OUTPUT_DIRECTORY (optional) \
+                      --Ss SIGMA_s (optional) \
+                      --Sr SIGMA_r (optional) \
+                      --R WEIGHT_OF_RED_CHANNEL (optional) \
+                      --G WEIGHT_OF_GREEN_CHANNEL (optional) \
+                      --B WEIGHT_OF_BLUE_CHANNEL (optional)
 
 E.g., python application.py --image_path ./data/color.png \
                             --save_path ./result/app/color \

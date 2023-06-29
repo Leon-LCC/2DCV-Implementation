@@ -11,10 +11,10 @@
 The class of Harris Corner Detector is implemented in [HCD.py](./HCD.py).
 ```python
 # Declare a Harris Corner Detector object with threshold
-HCD = Harris_corner_detector(threshold)
+HCD = Harris_corner_detector(THRESHOLD)
 
 # Open a image and convert it to grayscale
-img = cv2.imread(image_path)
+img = cv2.imread(INPUT_IMAGE_PATH)
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float64)
 
 # Detect corners
@@ -67,9 +67,9 @@ result = HCD.post_processing(response)
 
 - Usage
 ```bash
-python example.py --image_path input_image_path \
-                  --save_path output_image_path (optional) \
-                  --threshold t (optional)
+python example.py --image_path INPUT_IMAGE_PATH \
+                  --save_path OUTPUT_IMAGE_PATH (optional) \
+                  --threshold THRESHOLD (optional)
 
 E.g., python example.py --image_path ./data/Lenna.png \
                         --save_path ./result/Lenna.png \
