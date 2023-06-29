@@ -85,11 +85,19 @@ E.g., python example.py --image_path ./data/Lenna.png \
 
 ## Application: Color-to-Gray Conversion
 A linear color-to-gray conversion can be expressed in the following form.
+
 $$
-Y = \alpha R + \beta G + \gamma B \\
-\alpha + \beta + \gamma = 1 \\
-\alpha, \beta, \gamma \geq 0
+Y = \alpha R + \beta G + \gamma B
 $$
+
+$$
+\alpha + \beta + \gamma = 1 
+$$
+
+$$
+\alpha, \beta, \gamma \geq 0 
+$$
+
 where $R$, $G$, and $B$ are the red, green, and blue channels of the input color image, respectively, $Y$ is the output gray-scale image, $\alpha$, $\beta$, and $\gamma$ are the weights of the three channels, respectively. 
 &ensp;
 The joint bilateral filter can be utilized to determine suitable weights for each channel. The process is outlined below. Given a weight space of $\alpha$, $\beta$, and $\gamma$,
