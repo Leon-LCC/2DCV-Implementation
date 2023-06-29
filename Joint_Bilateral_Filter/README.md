@@ -32,7 +32,8 @@ result = JBF.joint_bilateral_filter(img_rgb, guidance).astype(np.uint8)
 ##
 
 ## Introduction
-- This project implements the joint bilateral filter in Python. The joint bilateral filter, proposed by Petschnigg *et al.*, is based on the [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter) and was originally used for flash/no-flash denoising. For more details, please refer to the paper: 
+- This project implements the joint bilateral filter in Python. The joint bilateral filter, proposed by Petschnigg *et al.*, is based on the [bilateral filter](https://en.wikipedia.org/wiki/Bilateral_filter) and was originally used for flash/no-flash denoising. For more details, please refer to the paper:
+
   [:link:](https://hhoppe.com/flash.pdf) Petschnigg et al., *Digital Photography with Flash and No-Flash Image Pairs*, in ACM Transactions on Graphics, 2004. 
 &ensp;
 - The joint bilateral filter is used for edge-preserving smoothing and detail enhancement. Some visual results are shown below. (The standard deviation of spatial kernel is set to 2, and the standard deviation of range kernel is set to 0.1. The guidance image is set to the original image.)
