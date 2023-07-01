@@ -11,6 +11,8 @@ More details can be found in the corresponding folders.
   - The implementation of Harris corner detector, a classic corner detection algorithm.
 - [Joint Bilateral Filter](https://github.com/Leon-LCC/2DCV-Implementation/tree/main/Joint_Bilateral_Filter)
   - The implementation of joint bilateral filter, a classic edge-preserving smoothing algorithm.
+- [Robust Principal Component Analysis](https://github.com/Leon-LCC/RobustPCA-Python)
+  - The implementation of robust principal component analysis, a classic foreground-background separation algorithm.
 
 
 
