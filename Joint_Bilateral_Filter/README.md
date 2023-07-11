@@ -111,21 +111,21 @@ The joint bilateral filter can be utilized to determine suitable weights for eac
 Below, we present some visual results obtained using various weights.
 - leaf.png
   - R:0.8, G:0.2, B:0.0, $\rightarrow$ Average L1 error: 3.131372
-    | <img src='./result/app/leaf/RGB_filtered_lowcost.png' width='200px'> | <img src='./result/app/leaf/gray_filtered_lowcost.png' width='200px'> | <img src='./result/app/leaf/gray_lowcost.png' width='200px'> |
+    | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/leaf/RGB_filtered_lowcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/leaf/gray_filtered_lowcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/leaf/gray_lowcost.png' width='200px'> |
     |:---:|:---:|:---:|
     | Guided by RGB | Guided by gray-scale | gray-scale |
 
   - R:0.0, G:0.0, B:1.0, $\rightarrow$ Average L1 error: 3.998800
-    | <img src='./result/app/leaf/RGB_filtered_highcost.png' width='200px'> | <img src='./result/app/leaf/gray_filtered_highcost.png' width='200px'> | <img src='./result/app/leaf/gray_highcost.png' width='200px'> |
+    | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/leaf/RGB_filtered_highcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/leaf/gray_filtered_highcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/leaf/gray_highcost.png' width='200px'> |
     |:---:|:---:|:---:|
     | Guided by RGB | Guided by gray-scale | gray-scale |
 - color.png
   - R:0.1, G:0.0, B:0.9, $\rightarrow$ Average L1 error: 0.170934
-    | <img src='./result/app/color/RGB_filtered_lowcost.png' width='200px'> | <img src='./result/app/color/gray_filtered_lowcost.png' width='200px'> | <img src='./result/app/color/gray_lowcost.png' width='200px'> |
+    | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/color/RGB_filtered_lowcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/color/gray_filtered_lowcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/color/gray_lowcost.png' width='200px'> |
     |:---:|:---:|:---:|
     | Guided by RGB | Guided by gray-scale | gray-scale |
   - R:0.2, G:0.8, B:0.0, $\rightarrow$ Average L1 error: 0.413212
-    | <img src='./result/app/color/RGB_filtered_highcost.png' width='200px'> | <img src='./result/app/color/gray_filtered_highcost.png' width='200px'> | <img src='./result/app/color/gray_highcost.png' width='200px'> |
+    | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/color/RGB_filtered_highcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/color/gray_filtered_highcost.png' width='200px'> | <img src='https://github.com/Leon-LCC/2DCV-Implementation/blob/main/Joint_Bilateral_Filter/result/app/color/gray_highcost.png' width='200px'> |
     |:---:|:---:|:---:|
     | Guided by RGB | Guided by gray-scale | gray-scale |
 
